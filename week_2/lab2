@@ -1,0 +1,185 @@
+/*week2*/
+
+//grepfile-to create file
+cat> grepfile.txt
+  welcome to ubuntu
+  unix and linux
+  rgukt is one of the best university
+^Z
+[1]+  Stopped                 cat > grepfile.txt
+
+//to print word
+user@harini:~$ grep 'unix' grepfile.txt
+unix and linux
+
+//-h: Display the matched lines, but do not display the filenames.
+user@harini:~$ grep -h 'and' grepfile.txt
+unix and linux
+
+//-n: Display the matched lines and their line numbers.
+user@harini:~$ grep -n 'one' grepfile.txt
+3:rgukt is one of the best university
+
+//-o :Print only the matched parts of a matching line, with each such part on a separate output line.
+user@harini:~/it_workshop$ grep -o "unix" grepfile.txt
+unix
+
+//-v: This prints out all the lines that do not matches the pattern
+user@harini:~/it_workshop$ grep -v "unix" grepfile.txt
+welcome to ubuntu
+rgukt is one of the best university
+
+//-e: used to display multiple characters
+user@harini:~$ grep -e 'to' -e 'is' grepfile.txt
+welcome to ubuntu
+rgukt is one of the best university
+
+//-c: This prints only a count of the lines that match a pattern
+user@harini:~/it_workshop$ grep -c "unix" grepfile.txt
+1
+
+//-l: dispalys the file name contating the given word
+user@harini:~/it_workshop$ grep -l "one" grepfile.txt
+grepfile.txt
+
+//creating file
+user@harini:~$ cat> monthFile.txt
+february
+march
+january 
+may
+
+//sort:to get the content in sorted order 
+user@harini:~$ sort monthFile.txt
+february
+january 
+march
+may
+
+//sort command
+//sort -M : to get the months in order wise
+user@harini:~$ sort -M monthFile.txt
+january 
+february
+march
+may
+
+user@harini:~$ cat> number.txt
+2
+3
+2
+45
+64
+4
+3
+7
+
+//-n: Sorts a file numerically (interprets data as numbers).
+user@harini:~/it_workshop$ sort -n number.txt
+2
+2
+3
+3
+4
+7
+45
+64
+
+//-u : to remove duplicate numbers
+user@harini:~$ sort -u number.txt
+2
+3
+4
+45
+64
+7
+
+//-r : to print the numbers in reverse order
+user@harini:~$ sort -r number.txt
+7
+64
+45
+4
+3
+3
+2
+2
+
+//sed command
+user@harini:~$ cat> sedfile1.txt
+rgukt
+unix
+linux is 
+a commands
+ubuntu
+rachana
+
+//to print lower case to upper case
+user@harini:~$ sed 's/rgukt/RGUKT/' sedfile1.txt
+RGUKT
+unix
+linux is 
+a commands
+ubuntu
+rachana
+
+user@harini:~$ cat> sedfile.txt
+rgukt
+unix 
+linux commands    
+unix
+racahana
+
+//removes last line
+user@harini:~$ sed '/racahana/d' sedfile.txt
+rgukt
+unix
+linux commands
+unix
+
+//Sed ‘2d’  : removing second line of the paragraph
+user@harini:~$ sed '2d' sedfile.txt
+rgukt
+linux commands
+unix
+racahana
+
+
+//awk command
+user@harini:~$ cat> awkfile.txt
+harini storage id 4334
+rachana linux id 3432
+bachlu  unix id 3238
+geetha linux id 2323
+
+//Splitting a Line Into Fields
+user@harini:~$ awk '{print $1}' awkfile.txt
+harini
+rachana
+bachlu
+geetha
+user@harini:~$ awk '{print $2,$4}' awkfile.txt
+storage 4334
+linux 3432
+unix 3238
+linux 2323
+user@harini:~$ awk '{print $3}' awkfile.txt
+id
+id
+id
+
+//
+user@harini:~/it_workshop$ free m
+              total        used        free      shared  buff/cache   available
+Mem:        7915756     1248856     5520444      158336     1146456     6248236
+Swap:       2097148           0     2097148
+
+
+
+//shutdown
+shutdown -r +s
+shutdown -r now
+shutdown -H (HALF)
+shutdown -p (POWEROFF)
+shutdown -su
+
